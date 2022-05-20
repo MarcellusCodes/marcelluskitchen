@@ -1,17 +1,15 @@
 import * as React from "react";
-import "../styles/global.css";
-import { UseDarkMode } from "../hooks/index";
-import { Branding } from "../components/index";
+import "../../styles/global.css";
+import { UseDarkMode } from "../../hooks/index";
 
 // markup
-const IndexPage = () => {
+const Meals = () => {
   const [ColorTheme, SetTheme] = UseDarkMode();
 
   return (
-    <main className="dark:bg-primary bg-white h-screen transition-colors duration-300">
-      <Branding />
+    <main className="dark:bg-primary bg-white h-screen">
       <h1 className="text-black dark:text-white font-primary text-6xl">
-        Startseite
+        Meals
       </h1>
       <button
         onClick={() => {
@@ -24,4 +22,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default Meals;
