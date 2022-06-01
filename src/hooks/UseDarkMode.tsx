@@ -6,13 +6,12 @@ export default function UseDarkMode() {
 
     const [Theme, SetTheme] = useState(StorageCheck);
     const ColorTheme = Theme === "light" ? "dark" : "light";
-
     useEffect(() => {
       localStorage.setItem("Theme", Theme);
       const root = window.document.documentElement;
       root.classList.remove(ColorTheme);
       root.classList.add(Theme);
-    }, [Theme, ColorTheme]);
+    }, [Theme]);
     return [ColorTheme, SetTheme];
   }
 }
