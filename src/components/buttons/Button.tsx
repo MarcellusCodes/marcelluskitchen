@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 interface ButtonProps {
   children: React.ReactNode;
   OnClick?: () => void;
-  ClassNames: string;
+  ClassNames?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ OnClick, ClassNames, children }) => {

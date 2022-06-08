@@ -8,7 +8,7 @@ const MenuButton: React.FC = () => {
 
   const MenuButtonMotion = {
     initial: { width: "18px" },
-    animate: { scaleX: Open ? 1 : 0.5 },
+    animate: { scaleX: Open ? 0.5 : 1 },
   };
 
   return (

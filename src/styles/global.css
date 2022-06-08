@@ -1,3 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 16px 16px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Freestyle Freestyle FreestyleImage FreestyleImage FreestyleImage FreestyleImage"
+    "KitchenImage KitchenImage Kitchen Kitchen KitchenImage2 KitchenImage2"
+    "BlogImage BlogImage BlogImage BlogImage Blog Blog";
+}
+
+.Freestyle {
+  grid-area: Freestyle;
+}
+
+.FreestyleImage {
+  grid-area: FreestyleImage;
+}
+
+.KitchenImage {
+  grid-area: KitchenImage;
+}
+
+.Kitchen {
+  grid-area: Kitchen;
+}
+
+.KitchenImage2 {
+  grid-area: KitchenImage2;
+}
+
+.BlogImage {
+  grid-area: BlogImage;
+}
+
+.Blog {
+  grid-area: Blog;
+}
+
+.test {
+  grid-template-areas:
+    "Freestyle Freestyle Freestyle Freestyle Freestyle Freestyle"
+    "FreestyleImage FreestyleImage FreestyleImage FreestyleImage FreestyleImage FreestyleImage"
+    "KitchenImage KitchenImage KitchenImage KitchenImage KitchenImage KitchenImage"
+    "Kitchen Kitchen Kitchen Kitchen Kitchen Kitchen"
+    "KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2"
+    "BlogImage BlogImage BlogImage BlogImage BlogImage BlogImage"
+    "Blog Blog Blog Blog Blog Blog";
+}
+
+@media screen and (max-width: 1024px) {
+  .container-grid {
+    grid-template-areas:
+      "Freestyle Freestyle Freestyle FreestyleImage FreestyleImage FreestyleImage"
+      "KitchenImage KitchenImage Kitchen Kitchen KitchenImage2 KitchenImage2"
+      "BlogImage BlogImage BlogImage BlogImage Blog Blog";
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container-grid {
+    grid-template-areas:
+      "Freestyle Freestyle Freestyle Freestyle Freestyle Freestyle"
+      "FreestyleImage FreestyleImage FreestyleImage FreestyleImage FreestyleImage FreestyleImage"
+      "KitchenImage KitchenImage KitchenImage KitchenImage KitchenImage KitchenImage"
+      "Kitchen Kitchen Kitchen Kitchen Kitchen Kitchen"
+      "KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2 KitchenImage2"
+      "BlogImage BlogImage BlogImage BlogImage BlogImage BlogImage"
+      "Blog Blog Blog Blog Blog Blog";
+  }
+}
