@@ -6,3 +6,6 @@ export { default as MenuButton } from "./buttons/MenuButton";
 export { default as LinkButton } from "./buttons/LinkButton";
 export { default as Header } from "./Header";
 export { default as SectionIcon } from "./SectionIcon";
+export { default as Section } from "./Section";
+export { default as Categories } from "./Categories";
+export { default as Image } from "./Image";

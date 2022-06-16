@@ -119,7 +119,7 @@ const Header: React.FC = () => {
           animate="animate"
           variants={HeaderTextMotion}
         >
-          <LinkButton Title="Get a meal" Href="/" ClassName="mt-10" />
+          <LinkButton Title="Eine Mahlzeit" Href="/" ClassName="mt-10" />
         </motion.div>
       </header>
     </>
