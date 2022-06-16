@@ -9,3 +9,4 @@ export { default as SectionIcon } from "./SectionIcon";
 export { default as Section } from "./Section";
 export { default as Categories } from "./Categories";
 export { default as Image } from "./Image";
+export { default as Title } from "./typography/Title";

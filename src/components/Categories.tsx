@@ -1,6 +1,6 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import { Section, SectionIcon, Image, LinkButton } from "./index";
+import { Section, SectionIcon, Image, LinkButton, Title } from "./index";
 import { motion } from "framer-motion";
 import { EasingTransition } from "../constants/index";
 
@@ -59,16 +59,15 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                   >
                     <SectionIcon Image={Categories.node.icon} />
                   </motion.div>
-
-                  <h2
-                    className={`font-primary text-5xl text-black dark:text-white whitespace-nowrap mb-10 md:mb-0 ${
+                  <Title
+                    ClassNames={`mb-10 md:mb-0 ${
                       Index % 2 === 0
                         ? "md:-rotate-[90deg] text-left"
                         : "md:rotate-[90deg] md:self-center text-right"
                     }`}
                   >
                     {Categories.node.title}
-                  </h2>
+                  </Title>
                 </div>
                 <div className={`flex flex-col space-y-10`}>
                   <motion.div
@@ -98,7 +97,7 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                   </motion.div>
 
                   <p
-                    className={`font-secondary dark:text-tertiary text-gray-600 text-xl max-w-[1050px] ${
+                    className={`font-secondary dark:text-tertiary text-gray-600 text-2xl max-w-[1050px] ${
                       Index % 2 === 0 ? "text-left" : "text-right"
                     }`}
                   >
