@@ -2,7 +2,7 @@ const NavItems = [
   {
     Id: 1,
     Name: "Über mich",
-    Href: "/Über",
+    Href: "/über",
   },
   {
     Id: 2,
