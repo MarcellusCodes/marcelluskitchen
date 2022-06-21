@@ -54,7 +54,7 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                 >
                   <motion.div
                     className={` ${
-                      Index % 2 === 0 ? "-ml-28" : "-mr-8"
+                      Index % 2 === 0 ? "-ml-8" : "-mr-8"
                     }  md:m-0`}
                   >
                     <SectionIcon Image={Categories.node.icon} />
@@ -92,7 +92,7 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                       Alt="Branding"
                       Placeholder="blurred"
                       Layout="fixed"
-                      Width="w-[100%!important]"
+                      Width="w-[100%!important] max-w-[960px]"
                       Height=" h-[300px!important]"
                       Styles={`${Index % 2 === 0 ? "" : "self-end"}`}
                     />
