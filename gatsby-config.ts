@@ -20,6 +20,16 @@ const config: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     {
+      resolve: "gatsby-plugin-use-dark-mode",
+      options: {
+        classNameDark: "dark",
+        classNameLight: "light",
+        storageKey: "darkMode",
+        element: "document.documentElement",
+        minify: true,
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",

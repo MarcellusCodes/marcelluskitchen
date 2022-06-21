@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { UseDarkMode } from "../../hooks/index";
 import { Button } from "../index";
+import useDarkMode from "use-dark-mode";
 
 const ThemeButtonMotion = {
   initial: {
@@ -21,17 +21,16 @@ const ThemeButtonTransition = {
 };
 
 const ThemeButton: React.FC = () => {
-  const [ColorTheme, SetTheme] = UseDarkMode();
+  const DarkMode = useDarkMode(false, {
+    classNameLight: "light",
+    classNameDark: "dark",
+  });
 
   return (
     <>
-      <Button
-        OnClick={() => {
-          SetTheme(ColorTheme === "light" ? "light" : "dark");
-        }}
-      >
+      <Button OnClick={DarkMode.toggle}>
         <AnimatePresence initial={false} exitBeforeEnter>
-          {ColorTheme === "light" ? (
+          {DarkMode.value === false ? (
             <motion.svg
               key="light"
               variants={ThemeButtonMotion}

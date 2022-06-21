@@ -9,6 +9,7 @@ interface ImageProps {
   Width: string;
   Height: string;
   Styles: string;
+  
 }
 
 const Image: React.FC<ImageProps> = ({

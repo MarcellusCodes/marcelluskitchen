@@ -3,19 +3,14 @@ import { Branding, ThemeButton, MenuButton } from "./index";
 import { NavItems } from "../constants/index";
 import { motion, LayoutGroup } from "framer-motion";
 import { Link } from "gatsby";
-import { UseDarkMode } from "../hooks/index";
 
 const NavBar = () => {
-  const [ColorTheme, SetTheme] = UseDarkMode();
-
   const NavItemMotion = {
     rest: {
-      color: ColorTheme === "dark" ? "#000" : "#a9adc1",
       pathLength: 0,
       opacity: 0,
     },
     hover: {
-      color: ColorTheme === "dark" ? "#000" : "#FFFFFF",
       pathLength: 1,
       opacity: 1,
     },
