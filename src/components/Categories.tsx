@@ -69,10 +69,9 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                     {Categories.node.title}
                   </Title>
                 </div>
-                <div
-                  className={`flex flex-col space-y-10 z-[100!important] relative`}
-                >
+                <div className={`flex flex-col space-y-10`}>
                   <motion.div
+                    className={`${Index % 2 === 0 ? "self-start" : "self-end"}`}
                     transition={{
                       ...EasingTransition,
                       duration: 1,
@@ -93,8 +92,7 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                       Placeholder="blurred"
                       Layout="fixed"
                       Width="w-[100%!important] max-w-[960px]"
-                      Height=" h-[300px!important]"
-                      Styles={`${Index % 2 === 0 ? "" : "self-end"}`}
+                      Height="h-[300px!important]"
                     />
                   </motion.div>
 
