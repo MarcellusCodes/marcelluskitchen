@@ -69,13 +69,15 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                     {Categories.node.title}
                   </Title>
                 </div>
-                <div className={`flex flex-col space-y-10`}>
+                <div
+                  className={`flex flex-col space-y-10 z-[100!important] relative`}
+                >
                   <motion.div
                     transition={{
                       ...EasingTransition,
                       duration: 1,
                     }}
-                    viewport={{ once: true, margin: "-300px" }}
+                    viewport={{ once: true, margin: "0px 0px -300px 0px" }}
                     initial={{
                       clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
                       y: -50,
