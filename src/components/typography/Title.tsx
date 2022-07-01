@@ -1,11 +1,7 @@
 import React from "react";
+import { TypographyProps } from "../../constants/index";
 
-interface TitleProps {
-  ClassNames: string;
-  children: React.ReactNode | string;
-}
-
-const Title: React.FC<TitleProps> = ({ children, ClassNames }) => {
+const Title: React.FC<TypographyProps> = ({ children, ClassNames }) => {
   return (
     <>
       <h2

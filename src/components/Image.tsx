@@ -8,8 +8,7 @@ interface ImageProps {
   Layout: string;
   Width: string;
   Height: string;
-  Styles: string;
-  
+  Styles?: string;
 }
 
 const Image: React.FC<ImageProps> = ({

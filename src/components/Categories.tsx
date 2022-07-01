@@ -1,6 +1,6 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import { Section, SectionIcon, Image, LinkButton, Title } from "./index";
+import { Section, SectionIcon, Image, LinkButton, Title, Text } from "./index";
 import { motion } from "framer-motion";
 import { EasingTransition } from "../constants/index";
 
@@ -95,14 +95,13 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                       Height="h-[300px!important]"
                     />
                   </motion.div>
-
-                  <p
-                    className={`font-secondary dark:text-tertiary text-gray-600 text-2xl max-w-[1050px] ${
+                  <Text
+                    ClassNames={`max-w-[1050px] ${
                       Index % 2 === 0 ? "text-left" : "text-right"
                     }`}
                   >
                     {Categories.node.information}
-                  </p>
+                  </Text>
                   <LinkButton
                     Title="Mehr Erfahren"
                     Href={Categories.node.link}

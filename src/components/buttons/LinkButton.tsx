@@ -21,6 +21,8 @@ const LinkButton: React.FC<LinkButtonProps> = ({ Title, Href, ClassName }) => {
         <motion.div
           initial="initial"
           whileHover="hover"
+          whileTap="hover"
+          whileFocus="hover"
           className={`flex flex-row items-center space-x-6 group ${ClassName}`}
         >
           <span className="font-primary text-black dark:text-white text-3xl">
