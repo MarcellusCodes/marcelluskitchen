@@ -10,10 +10,25 @@ import {
   NewMealsAdded,
 } from "../components/index";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 const IndexPage = ({ data }) => {
   return (
     <div className="dark:bg-primary bg-white transition-colors duration-300">
+      <Helmet
+        htmlAttributes={{
+          lang: "de",
+        }}
+      >
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content="Freestyle Kitchen Blog, mit neuesten rezepten aus alle Welt, von scharfem bis süßem essen ist alles dabei."
+        />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <link rel="canonical" href="https://marcelluskitchen.vercel.app/" />
+        <title>Marcelluskitchen</title>
+      </Helmet>
       <NavBar />
       <Header />
       <main>

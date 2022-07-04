@@ -17,6 +17,7 @@ const MenuButton: React.FC = () => {
         SetOpen((prev) => !prev);
       }}
       ClassNames="flex flex-col space-y-1"
+      AriaLabel="Menü"
     >
       <motion.div
         transition={ButtonTransition}

@@ -96,7 +96,7 @@ const MealOf: React.FC = ({ Meals }) => {
         ))}
         <AnimatePresence exitBeforeEnter>
           {Filter === "" ? (
-            <motion.img
+            <motion.div
               transition={{
                 ...EasingTransition,
                 duration: 1,
@@ -110,10 +110,17 @@ const MealOf: React.FC = ({ Meals }) => {
                 y: 0,
               }}
               viewport={{ once: true, margin: "0px 0px -300px 0px" }}
-              src={Choose}
-              alt={"Meal Of Choose Placeholder"}
               className="w-[256px] h-[256px] mx-auto"
-            />
+            >
+              <motion.img />
+              <StaticImage
+                src="../images/choose.png"
+                alt="Meal Of Choose Placeholder"
+                placeholder="blurred"
+                layout="fixed"
+                className="w-full h-full"
+              />
+            </motion.div>
           ) : (
             ""
           )}

@@ -28,7 +28,7 @@ const ThemeButton: React.FC = () => {
 
   return (
     <>
-      <Button OnClick={DarkMode.toggle}>
+      <Button OnClick={DarkMode.toggle} AriaLabel="Toggle Theme">
         <AnimatePresence initial={false} exitBeforeEnter>
           {DarkMode.value === false ? (
             <motion.svg
