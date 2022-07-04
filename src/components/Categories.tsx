@@ -1,6 +1,6 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import { Section, SectionIcon, Image, LinkButton, Title, Text } from "./index";
+import { Section, DynamicSectionIcon, Image, LinkButton, Title, Text } from "./index";
 import { motion } from "framer-motion";
 import { EasingTransition } from "../constants/index";
 
@@ -57,7 +57,7 @@ const Categories: React.FC<CategoriesProps> = ({ Categories }) => {
                       Index % 2 === 0 ? "-ml-8" : "-mr-8"
                     }  md:m-0`}
                   >
-                    <SectionIcon Image={Categories.node.icon} />
+                    <DynamicSectionIcon Image={Categories.node.icon} />
                   </motion.div>
                   <Title
                     ClassNames={`mb-10 md:mb-0 ${

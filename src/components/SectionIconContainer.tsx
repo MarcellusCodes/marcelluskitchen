@@ -1,12 +1,12 @@
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
-interface SectionIconProps {
-  Image: undefined;
+interface SectionIconContainerProps {
+  children: React.ReactNode;
 }
 
-const SectionIcon: React.FC<SectionIconProps> = ({ Image }) => {
-  const FormatImage = getImage(Image);
+const SectionIconContainer: React.FC<SectionIconContainerProps> = ({
+  children,
+}) => {
   return (
     <>
       <div className="flex flex-col items-center">
@@ -40,13 +40,7 @@ const SectionIcon: React.FC<SectionIconProps> = ({ Image }) => {
             />
           </svg>
           <div className="h-24 w-24 duration-300 rounded-full border-2 border-gray-200 dark:border-gray-600 p-1 inline-flex items-center justify-center relative">
-            <GatsbyImage
-              image={FormatImage}
-              alt="Branding"
-              placeholder="blurred"
-              layout="fixed"
-              className="w-[64px!important] h-[64px!important]"
-            />
+            {children}
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,4 +76,4 @@ const SectionIcon: React.FC<SectionIconProps> = ({ Image }) => {
   );
 };
 
-export default SectionIcon;
+export default SectionIconContainer;

@@ -7,6 +7,7 @@ import {
   SectionIcon,
   Categories,
   MealOf,
+  NewMealsAdded,
 } from "../components/index";
 import { graphql } from "gatsby";
 
@@ -16,11 +17,9 @@ const IndexPage = ({ data }) => {
       <NavBar />
       <Header />
       <main>
-        <Categories Categories={data.allContentfulCategories.edges} />
-        <MealOf
-          Icon={data.allContentfulIcons.edges[0].node.image}
-          Meals={data.allContentfulMeal.edges}
-        />
+        <Categories Categories={data.categories.edges} />
+        <MealOf Meals={data.meals.edges} />
+        <NewMealsAdded NewMeals={data.newMeals.edges} />
       </main>
     </div>
   );
@@ -30,7 +29,7 @@ export default IndexPage;
 
 export const query = graphql`
   query Landing {
-    allContentfulCategories(sort: { fields: order, order: ASC }) {
+    categories: allContentfulCategories(sort: { fields: order, order: ASC }) {
       edges {
         node {
           id
@@ -46,17 +45,25 @@ export const query = graphql`
         }
       }
     }
-    allContentfulIcons {
+    meals: allContentfulMeal {
       edges {
         node {
+          categorie
           id
+          description
           image {
-            gatsbyImageData(height: 64, width: 64, placeholder: BLURRED)
+            gatsbyImageData(placeholder: BLURRED, width: 960, height: 720)
           }
+          mealOfThe
+          name
+          caption
         }
       }
     }
-    allContentfulMeal {
+    newMeals: allContentfulMeal(
+      sort: { fields: createdAt, order: DESC }
+      limit: 10
+    ) {
       edges {
         node {
           categorie

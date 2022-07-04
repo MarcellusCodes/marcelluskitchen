@@ -12,6 +12,9 @@ module.exports = {
         primary: ["Oregano", "cursive"],
         secondary: ["Vollkorn", "serif"],
       },
+      transitionTimingFunction: {
+        "easing-transition": "cubic-bezier(0.5, 0, 0, 1)",
+      },
     },
   },
   plugins: [],

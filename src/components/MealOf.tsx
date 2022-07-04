@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Section,
-  SectionIcon,
+  SectionIconContainer,
   Image,
   LinkButton,
   Title,
@@ -13,14 +13,15 @@ import {
   MealOfFilterButtons,
   ButtonTransition,
   MealOfBgImages,
+  EasingTransition,
 } from "../constants/index";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
+import Choose from "../images/choose.png";
 
-const MealOf: React.FC = ({ Icon, Meals }) => {
+const MealOf: React.FC = ({ Meals }) => {
   const [Items, SetItems] = useState(Meals);
-  const [Filter, SetFilter] = useState("day");
-  const [FilterdItems, SetFilteredItems] = useState(Meals);
+  const [Filter, SetFilter] = useState("");
 
   const ImageMotion = {
     initial: {
@@ -33,15 +34,20 @@ const MealOf: React.FC = ({ Icon, Meals }) => {
       marginRight: "24px",
     },
   };
-  useEffect(() => {
-    SetFilteredItems(Items.filter((Item) => Item.mealOfThe === Filter));
-  }, [Filter]);
 
   return (
     <Section>
       <div className="flex flex-col sm:flex-row items-start sm:items-center">
         <div className="-ml-8">
-          <SectionIcon Image={Icon} />
+          <SectionIconContainer>
+            <StaticImage
+              src="../images/mealof.png"
+              alt="Branding"
+              placeholder="blurred"
+              layout="fixed"
+              className="w-[64px!important] h-[64px!important]"
+            />
+          </SectionIconContainer>
         </div>
         <Title>Meal of ...</Title>
       </div>
@@ -49,7 +55,11 @@ const MealOf: React.FC = ({ Icon, Meals }) => {
         {MealOfFilterButtons.map((Item) => (
           <motion.button
             onClick={() => {
+              console.log(Items);
               SetFilter(Item.Filter);
+              console.log(
+                Items.filter((Item) => Item.node.mealOfThe === Filter)
+              );
             }}
             initial="initial"
             animate={Item.Filter === Filter ? "animate" : "initial"}
@@ -74,36 +84,107 @@ const MealOf: React.FC = ({ Icon, Meals }) => {
           </motion.button>
         ))}
       </div>
-      <div className="mt-16 relative h-[500px]">
+      <div
+        className={`mt-16 relative  ${Filter === "" ? "h-[500px]" : "h-full"}`}
+      >
         {MealOfBgImages.map((Image) => (
           <img
             src={Image.Image}
             alt={Image.Alt}
-            className={`absolute opacity-25 w-[128px] h-[128px] ${Image.X} ${Image.Y}`}
+            className={`absolute opacity-25 w-[64px] h-[64px] md:w-[128px] md:h-[128px] ${Image.X} ${Image.Y}`}
           />
         ))}
-        {FilterdItems &&
-          FilterdItems.map((Item) => (
-            <article
-              key={Item.id}
-              className="flex flex-col items-center relative space-y-10 max-w-[960px] mx-auto"
-            >
-              <figure className="z-10 max-w-[960px] h-[300px] w-full">
-                <figcaption>{Item.node.caption}</figcaption>
-              </figure>
-              <div className="self-start space-y-10 flex flex-col">
-                <div className="flex flex-row items-center space-x-4">
-                  <ContentHeading>{Item.node.name}</ContentHeading>
-                  <Badge Title="Mittag" />
-                </div>
-                <Text>{Item.node.description}</Text>
-                <LinkButton
-                  Title="Zur Mahlzeit"
-                  Href={`/mahlzeiten/${Item.node.name}`}
-                />
-              </div>
-            </article>
-          ))}
+        <AnimatePresence exitBeforeEnter>
+          {Filter === "" ? (
+            <motion.img
+              transition={{
+                ...EasingTransition,
+                duration: 1,
+              }}
+              initial={{
+                clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                y: -50,
+              }}
+              whileInView={{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                y: 0,
+              }}
+              viewport={{ once: true, margin: "0px 0px -300px 0px" }}
+              src={Choose}
+              alt={"Meal Of Choose Placeholder"}
+              className="w-[256px] h-[256px] mx-auto"
+            />
+          ) : (
+            ""
+          )}
+          {Items.filter((Item) => Item.node.mealOfThe === Filter).map(
+            (FilteredItem) => (
+              <motion.article
+                key={FilteredItem.id}
+                className="flex flex-col items-center relative space-y-10 max-w-[960px] mx-auto"
+              >
+                <motion.figure
+                  transition={{
+                    ...EasingTransition,
+                    duration: 1,
+                  }}
+                  initial={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                    y: -50,
+                  }}
+                  animate={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                    y: 0,
+                  }}
+                  exit={{
+                    clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
+                    y: -50,
+                  }}
+                  className="z-10 max-w-[960px] h-[300px] w-full"
+                >
+                  <Image
+                    Image={FilteredItem.node.image}
+                    Alt="Branding"
+                    Placeholder="blurred"
+                    Layout="fixed"
+                    Width="w-[100%!important] max-w-[960px]"
+                    Height="h-[300px!important]"
+                  />
+                  <figcaption>{FilteredItem.node.caption}</figcaption>
+                </motion.figure>
+                <motion.div
+                  transition={{
+                    ...EasingTransition,
+                    duration: 1,
+                  }}
+                  initial={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                    y: 50,
+                  }}
+                  animate={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                    y: 0,
+                  }}
+                  exit={{
+                    clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
+                    y: 50,
+                  }}
+                  className="self-start space-y-10 flex flex-col"
+                >
+                  <div className="flex flex-row items-center space-x-4">
+                    <ContentHeading>{FilteredItem.node.name}</ContentHeading>
+                    <Badge Title="Mittag" />
+                  </div>
+                  <Text>{FilteredItem.node.description}</Text>
+                  <LinkButton
+                    Title="Zur Mahlzeit"
+                    Href={`/mahlzeiten/${FilteredItem.node.name}`}
+                  />
+                </motion.div>
+              </motion.article>
+            )
+          )}
+        </AnimatePresence>
       </div>
     </Section>
   );
