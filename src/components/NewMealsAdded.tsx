@@ -72,14 +72,15 @@ const NewMealsAdded: React.FC = ({ NewMeals }) => {
                         "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
                       y: 50,
                     }}
-                    className="space-y-10 flex flex-col h-full items-center justify-center p-2"
+                    className="space-y-10 flex flex-col h-full items-center flex-wrap justify-center p-2"
                   >
-                    <div className="flex flex-row items-center space-x-4 space-y-4 flex-wrap">
-                      <ContentHeading>{Meal.node.name}</ContentHeading>
+                    <ContentHeading>{Meal.node.name}</ContentHeading>
+                    <div className="flex flex-wrap space-x-4">
                       {Meal.node.categorie.map((Categorie) => (
                         <Badge Title={Categorie} />
                       ))}
                     </div>
+
                     <Text>{Meal.node.description}</Text>
                     <LinkButton
                       Title="Zur Mahlzeit"
@@ -91,7 +92,23 @@ const NewMealsAdded: React.FC = ({ NewMeals }) => {
             ))}
           </Swiper>
         </div>
-        <div className="w-full md:w-[30%] h-full justify-center flex items-center mt-16 mb-10 md:mt-0 md:mb-0">
+        <motion.div
+          transition={{ ...EasingTransition, duration: 1 }}
+          initial={{
+            rotate: 0,
+            opacity: 0,
+            scale: 0,
+          }}
+          viewport={{ once: true, margin: "0px 0px -300px 0px" }}
+          whileInView={{
+            rotate: [-25, 25, -25, 25, -25, 25, 0],
+            x: [-25, 25, -25, 25, -25, 25, 0],
+            y: [25, -25, 25, -25, 25, -25, 0],
+            opacity: 1,
+            scale: 1,
+          }}
+          className="w-full md:w-[30%] h-full justify-center flex items-center mt-16 mb-10 md:mt-0 md:mb-0"
+        >
           <StaticImage
             src="../images/new_meals_added.png"
             alt="Branding"
@@ -99,7 +116,7 @@ const NewMealsAdded: React.FC = ({ NewMeals }) => {
             layout="fixed"
             className="w-[128px!important] h-[128px!important] md:w-[256px!important] md:h-[256px!important]"
           />
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
