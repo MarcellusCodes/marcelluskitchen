@@ -40,7 +40,7 @@ const NewMealsAdded: React.FC = ({ NewMeals }) => {
       </div>
       <div className="w-full h-auto md:h-[500px] flex flex-col-reverse md:space-y-0 items-center md:flex-row justify-between">
         <div className="w-full md:w-[70%] h-full flex flex-row justify-between">
-          <Swiper className="w-full md:h-full relative justify-self-start h-[300px] p-2 z-[40!important]">
+          <Swiper className="w-full md:h-full relative justify-self-start h-[500px] p-2 z-[40!important]">
             {NewMeals.map((Meal) => (
               <SwiperSlide className="w-full h-full rounded-lg relative flex justify-center items-center group">
                 <motion.div className="w-full h-full absolute inset-0 rounded-lg dark:bg-white bg-black group-hover:scale-100 scale-75 duration-300 ease-easing-transition"></motion.div>
@@ -72,11 +72,13 @@ const NewMealsAdded: React.FC = ({ NewMeals }) => {
                         "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
                       y: 50,
                     }}
-                    className="space-y-10 flex flex-col h-full items-center justify-center"
+                    className="space-y-10 flex flex-col h-full items-center justify-center p-2"
                   >
-                    <div className="flex flex-row items-center space-x-4">
+                    <div className="flex flex-row items-center space-x-4 space-y-4 flex-wrap">
                       <ContentHeading>{Meal.node.name}</ContentHeading>
-                      <Badge Title="Mittag" />
+                      {Meal.node.categorie.map((Categorie) => (
+                        <Badge Title={Categorie} />
+                      ))}
                     </div>
                     <Text>{Meal.node.description}</Text>
                     <LinkButton

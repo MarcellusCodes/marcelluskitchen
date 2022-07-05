@@ -178,9 +178,12 @@ const MealOf: React.FC = ({ Meals }) => {
                   }}
                   className="self-start space-y-10 flex flex-col"
                 >
-                  <div className="flex flex-row items-center space-x-4">
+                  <div className="flex flex-row flex-wrap items-center space-x-4 space-y-4">
                     <ContentHeading>{FilteredItem.node.name}</ContentHeading>
-                    <Badge Title="Mittag" />
+
+                    {FilteredItem.node.categorie.map((Categorie) => (
+                      <Badge Title={Categorie} />
+                    ))}
                   </div>
                   <Text>{FilteredItem.node.description}</Text>
                   <LinkButton
